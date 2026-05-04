@@ -1,7 +1,5 @@
 spring:
-  profiles:
-    active: inventory-service
-
+ 
   threads:
     virtual:
       enable: true
