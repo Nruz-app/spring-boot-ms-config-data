@@ -1,7 +1,7 @@
 spring:
-  threads:
-    virtual:
-      enable: true
+  config:
+    activate:
+      on-profile: inventory
 
   datasource:
     url: jdbc:mysql://localhost:3306/inventory-db
@@ -19,6 +19,3 @@ spring:
 
 server:
   port: 8082
-  error:
-    include-message: always
-    include-stacktrace: never

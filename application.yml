@@ -1,6 +1,11 @@
 spring:
-  application:
-    name: inventory-service
+  profiles:
+    active: inventory
 
-  config:
-    import: optional:configserver:http://localhost:8888
+  threads:
+    virtual:
+      enable: true
+
+server:
+  error:
+    include-message: always
