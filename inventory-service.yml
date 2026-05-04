@@ -1,20 +1,14 @@
 spring:
-  application:
-    name: inventory-service
-
   config:
-    import: "optional:configserver:http://localhost:8888"
-
+    import: configserver:http://localhost:8888
   threads:
     virtual:
       enable: true
-
   datasource:
     url: jdbc:mysql://localhost:3306/inventory-db
     username: inventory_user
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
-
   jpa:
     hibernate:
       ddl-auto: update
@@ -22,7 +16,6 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
-
 server:
   port: 8082
   error:
