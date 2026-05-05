@@ -3,7 +3,7 @@ spring:
     virtual:
       enable: true
   datasource:
-    url: jdbc:mysql://localhost:3306/inventory-db
+    url: jdbc:mysql://localhost:3306/inventeroy-db
     username: inventory_user
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
