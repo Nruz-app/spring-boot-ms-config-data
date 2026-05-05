@@ -11,6 +11,16 @@ spring:
       password: ${MONGO_PASSWORD:password}
       authentication-database: ${MONGO_AUTH_DB:admin}
 
+app:
+  maintenance:
+    message: "Sistema Operativo  - V 1.0"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "refresh, health, info"
+
 server:
   port: 8080
   error:
