@@ -18,8 +18,8 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
-  server:
-    port: 8081
-    error:
-      include-message: always
-      include-stacktrace: never
+server:
+  port: 8081
+  error:
+    include-message: always
+    include-stacktrace: never
