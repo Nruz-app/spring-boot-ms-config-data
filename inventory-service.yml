@@ -16,6 +16,15 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
 
+inventory:
+  allow-backorer: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "refresh, health, info"        
+
 server:
   port: 8082
   error:
