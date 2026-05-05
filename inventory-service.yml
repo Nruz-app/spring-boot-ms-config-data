@@ -1,4 +1,7 @@
 spring:
+  threads:
+    virtual:
+      enable: true
   datasource:
     url: jdbc:mysql://localhost:3306/inventory-db
     username: inventory_user
