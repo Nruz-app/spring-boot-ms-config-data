@@ -2,5 +2,5 @@ spring:
   application:
     name: inventory-service
   config:
-    #import: "optional:classpath:/inventory-service.yml"
-    import: "optional:config-server/inventory-service.yml"
+    import: "optional:configserver:http://localhost:8888"
+    #import: "optional:config-server/inventory-service.yml"
