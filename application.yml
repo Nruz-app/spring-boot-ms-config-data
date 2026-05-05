@@ -1,9 +1,0 @@
-spring:
- 
-  threads:
-    virtual:
-      enable: true
-
-server:
-  error:
-    include-message: always
