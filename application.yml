@@ -4,3 +4,4 @@ spring:
      - inventory-service
      - order-service
      - product-service
+     - api-gateway
