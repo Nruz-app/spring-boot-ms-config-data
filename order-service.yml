@@ -18,6 +18,11 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/        
+
 order:
   enable: true
 
