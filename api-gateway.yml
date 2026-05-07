@@ -1,21 +1,56 @@
+server:
+  port: 9000
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
     fetch-registry: true
-    register-with-eureka: true #se registra en el servidor de Eureka
+    register-with-eureka: true
 
-# Configuración de seguridad para el API Gateway
-aprint:    
+spring:
   security:
-  oauth2:
-    resourceserver:
-      jwt:
-        issuer-uri: http://localhost:8080/realms/ecommerce-realm
+    oauth2:
+      # 1. Configuración de CLIENTE (Necesaria para TokenRelay)
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/ecommerce-realm
+        registration:
+          api-gateway-client:
+            provider: keycloak
+            client-id: api-gateway-client
+            client-secret: pPeVOgygCO96s9V6lJnFY6vHBQ6KpLZY # Reemplaza con el secreto real
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
+            scope: openid
+      
+      # 2. Configuración de SERVIDOR (Necesaria para validar entrada)
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/ecommerce-realm
 
-server:
-  port: 9000
-  error:
-    include-message: always
-    include-stacktrace: never
+  cloud:
+    gateway:
+      # 3. Filtro Global: Pasa el token a TODOS los microservicios
+      default-filters:
+        - TokenRelay
+      
+      routes:
+        # Ruta a Microservicio de Productos
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/api/v1/product/**
+        
+        # Ruta a Microservicio de Órdenes
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/api/v1/order/**
+
+        # Ruta a Microservicio de Inventario
+        - id: inventory-service
+          uri: lb://inventory-service
+          predicates:
+            - Path=/api/v1/inventory/**
