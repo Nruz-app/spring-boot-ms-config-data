@@ -32,7 +32,7 @@ management:
         include: "refresh, health, info"
 
 server:
-  port: 8080
+  port: 8083
   error:
     include-message: always
     include-stacktrace: never
