@@ -15,7 +15,7 @@ spring:
       client:
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/realms/ecommerce-realm
+            issuer-uri: http://localhost:8080/realms/ecommercer-realm
         registration:
           api-gateway-client:
             provider: keycloak
@@ -28,7 +28,7 @@ spring:
       # 2. Configuración de SERVIDOR (Necesaria para validar entrada)
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/ecommerce-realm
+          issuer-uri: http://localhost:8080/realms/ecommercer-realm
 
   cloud:
     gateway:
