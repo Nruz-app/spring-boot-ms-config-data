@@ -4,7 +4,8 @@ spring:
       enable: true
   data:
     mongodb:
-      host: ${MONGO_HOST:localhost}
+      #host: ${MONGO_HOST:localhost}
+      host: ${MONGO_HOST:mongodb}
       port: ${MONGO_PORT:27017}
       database: ${MONGO_DATABASE:product-db}
       username: ${MONGO_USERNAME:root}
@@ -19,7 +20,8 @@ eureka:
 
   instance:
     prefer-ip-address: true
-    hostname: localhost
+    #hostname: localhost
+    hostname: product-service
 
 
 app:
