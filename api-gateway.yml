@@ -4,7 +4,8 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      #defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka-server:8761/eureka/
     fetch-registry: true
     register-with-eureka: true
 
@@ -25,7 +26,7 @@ spring:
             authorization-grant-type: authorization_code
             redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
             scope: openid
-      
+
       # 2. Configuración de SERVIDOR (Necesaria para validar entrada)
       resourceserver:
         jwt:
@@ -37,14 +38,14 @@ spring:
       # 3. Filtro Global: Pasa el token a TODOS los microservicios
       default-filters:
         - TokenRelay
-      
+
       routes:
         # Ruta a Microservicio de Productos
         - id: product-service
           uri: lb://product-service
           predicates:
             - Path=/api/v1/product/**
-        
+
         # Ruta a Microservicio de Órdenes
         - id: order-service
           uri: lb://order-service
