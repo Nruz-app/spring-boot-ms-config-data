@@ -15,12 +15,13 @@ spring:
       client:
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/realms/ecommercer-realm
+            #issuer-uri: http://localhost:8080/realms/ecommercer-realm
+            issuer-uri: http://keycloak:8080/realms/ecommercer-realm
         registration:
           api-gateway-client:
             provider: keycloak
             client-id: api-gateway-client
-            client-secret: pPeVOgygCO96s9V6lJnFY6vHBQ6KpLZY # Reemplaza con el secreto real
+            client-secret: pPeVOgygCO96s9V6lJnFY6vHBQ6KpLZY
             authorization-grant-type: authorization_code
             redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
             scope: openid
@@ -28,7 +29,8 @@ spring:
       # 2. Configuración de SERVIDOR (Necesaria para validar entrada)
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/ecommercer-realm
+          #issuer-uri: http://localhost:8080/realms/ecommercer-realm
+          issuer-uri: http://keycloak:8080/realms/ecommercer-realm
 
   cloud:
     gateway:
